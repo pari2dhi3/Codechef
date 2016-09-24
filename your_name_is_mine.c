@@ -1,0 +1,73 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int flag,t,i,ml,wl,j,count,p;
+	char m[25002],w[25002];
+	scanf("%d", &t);
+	while(t--)
+	{
+		scanf("%s",m);
+		scanf("%s",w);
+		ml=strlen(m);
+		wl=strlen(w);
+		p=0;
+		count=0;
+		if(ml>wl)
+		{
+			for(i=0;i<wl;i++)
+			{
+				for(j=p;j<ml;j++)
+				{
+					if(w[i]==m[j])
+					{
+						count++;
+						p=j+1;
+						break;
+					}
+				}
+			}
+			if(count==wl)
+				printf("YES\n");
+			else
+				printf("NO\n");
+		}
+		p=0;
+		if(wl>ml)
+		{
+			for(i=0;i<ml;i++)
+			{
+				for(j=p;j<wl;j++)
+				{
+					if(w[j]==m[i])
+					{
+						count++;
+						p=j+1;
+						break;
+					}
+				}
+			}
+			if(count==ml)
+				printf("YES\n");
+			else
+				printf("NO\n");
+		}
+		flag=0;
+		if(wl==ml)
+		{
+			for(i=0;i<wl;i++)
+			{
+				if(w[i]!=m[i])
+				{
+					flag=1;
+					break;
+				}
+			}
+			if(flag==1)
+				printf("NO\n");
+			if(flag==0)
+				printf("YES\n");
+		}
+	}
+	return 0;
+}
